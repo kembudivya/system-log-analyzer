@@ -12,10 +12,6 @@ def index():
     if request.method == 'POST':
         keyword = request.form['keyword']
 
-        with open(LOG_FILE, 'r') as file:
-            for line in file:
-                if keyword.lower() in line.lower():
-                    errors.append(line.strip())
         if os.path.exists(LOG_FILE):
             with open(LOG_FILE, 'r') as file:
                 for line in file:
@@ -28,3 +24,4 @@ def index():
 
 
 if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
